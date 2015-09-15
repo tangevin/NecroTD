@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class Zombie : Tower {
-    private double initalDamage = 8;
-    private double initialFireRate = 1.0;
-    private double initialRange = 80;
+    private float initalDamage = 8;
+    private float initialFireRate = 1.0f;
+    private float initialRange = 80;
 
 	// Use this for initialization
 	void Start () {

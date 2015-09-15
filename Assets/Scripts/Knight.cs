@@ -2,17 +2,15 @@
 using System.Collections;
 
 public class Knight : Creep {
-    private double initialHealth = 30;
-    private double initialSpeed = 1.5;
-    private double souls = 200;
-    private bool armor = true;
+    private float initialHealth = 30;
+    private float initialSpeed = 1.5f;
 
 	// Use this for initialization
 	void Start () {
-        this.setHealth(initialHealth);
-        this.setSpeed(initialSpeed);
-        this.setSouls(souls);
-        this.setArmor(armor);
+        this.health = initialHealth;
+        this.speed = initialSpeed;
+        this.souls = 200;
+        this.armor = true;
 	
 	}
 	

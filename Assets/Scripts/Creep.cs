@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 
 public class Creep : MonoBehaviour {
-	private double health;
-	private double speed;
-    private double souls;
-    private bool flying = false;
-    private bool magicImmune = false;
-    private bool armor = false;
-    private double DoT = 0;
-    private List<GameObject> path;
-    private int curDestination = 0;
+	protected float health;
+	protected float speed;
+    protected float souls;
+    protected bool flying = false;
+    protected bool magicImmune = false;
+    protected bool armor = false;
+    protected float DoT = 0;
+    protected List<GameObject> path;
+    protected int curDestination = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -20,28 +20,28 @@ public class Creep : MonoBehaviour {
 	void Update () {
 		}
 
-	public double getHealth() {
+	public float getHealth() {
 		return this.health;
 	}
 
-	public void setHealth(double health) {
+	public void setHealth(float health) {
 		this.health = health;
 	}
 
-	public double getSpeed() {
+	public float getSpeed() {
 		return this.speed;
 	}
 
-	public void setSpeed(double speed) {
+	public void setSpeed(float speed) {
 		this.speed = speed;
 	}
 
-    public double getSouls()
+    public float getSouls()
     {
         return this.souls;
     }
 
-    public void setSouls(double souls)
+    public void setSouls(float souls)
     {
         this.souls = souls;
     }
@@ -74,22 +74,22 @@ public class Creep : MonoBehaviour {
         this.armor = armor;
     }
         
-   public double getDoT()
+   public float getDoT()
     {
         return this.DoT;
     }
 
-    public void setDoT(double DoT)
+    public void setDoT(float DoT)
     {
         this.DoT = DoT;
     }
 
-    public List<GameObject> setPath()
+    public List<GameObject> getPath()
     {
         return this.path;
     }
 
-    public void getPath(List<GameObject> path)
+    public void setPath(List<GameObject> path)
     {
         this.path = path;
     }

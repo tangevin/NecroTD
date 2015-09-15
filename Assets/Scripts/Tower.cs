@@ -2,15 +2,15 @@
 using System.Collections;
 
 public class Tower : MonoBehaviour {
-    private double damage;
-    private double fireRate;
-    private double atkCooldown = 0;
-    private double range;
+    private float damage;
+    private float fireRate;
+    private float atkCooldown = 0;
+    private float range;
     private bool flying = false;
     private bool armorPen = false;
     private bool magic = false;
-    private double DoT = 0;
-    private double slow = 1.0;
+    private float DoT = 0;
+    private float slow = 1.0f;
     private bool splash = false;
     private Creep target;
 
@@ -24,42 +24,42 @@ public class Tower : MonoBehaviour {
 	
 	}
 
-    public double getDamage()
+    public float getDamage()
     {
         return this.damage;
     }
 
-    public void setDamage(double damage)
+    public void setDamage(float damage)
     {
         this.damage = damage;
     }
 
-    public double getFireRate()
+    public float getFireRate()
     {
         return this.fireRate;
     }
 
-    public void setFireRate(double fireRate)
+    public void setFireRate(float fireRate)
     {
         this.fireRate = fireRate;
     }
 
-    public double getAtkCooldown()
+    public float getAtkCooldown()
     {
         return this.atkCooldown;
     }
 
-    public void setAtkCooldown(double atkCooldown)
+    public void setAtkCooldown(float atkCooldown)
     {
         this.atkCooldown = atkCooldown;
     }
 
-    public double getRangee()
+    public float getRangee()
     {
         return this.range;
     }
 
-    public void setRange(double range)
+    public void setRange(float range)
     {
         this.range = range;
     }
@@ -94,22 +94,22 @@ public class Tower : MonoBehaviour {
         this.magic = magic;
     }
 
-    public double getDoT()
+    public float getDoT()
     {
         return this.DoT;
     }
 
-    public void setDoT(double DoT)
+    public void setDoT(float DoT)
     {
         this.DoT = DoT;
     }
 
-    public double getSlow()
+    public float getSlow()
     {
         return this.slow;
     }
 
-    public void setSlow(double slow)
+    public void setSlow(float slow)
     {
         this.slow = slow;
     }
