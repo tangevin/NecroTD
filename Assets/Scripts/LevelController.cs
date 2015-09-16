@@ -17,6 +17,7 @@ public class LevelController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		initialHazardCount = hazardCount;
+		startWaves();
 	}
 	
 	// Update is called once per frame
@@ -29,22 +30,26 @@ public class LevelController : MonoBehaviour {
 	}
 
 	public IEnumerator spawnWaves() {
+		Debug.Log("Starting spawn");
 		yield return new WaitForSeconds(startWait);
-
+		Debug.Log ("start wait over");
 		while(waves > 0) {
+			Debug.Log ("Starting wave " + waves);
 			for (int i = 0; i < hazardCount; i++) {
 				Vector3 spawnPosition = waypoints[0].transform.position;
 				Quaternion spawnRotation = Quaternion.identity;
-				Transform creepTransform;
+				GameObject creepObject;
+				Debug.Log ("spawning enemy " + i + " at " + spawnPosition);
 
-				if (i > initialHazardCount) {
-					creepTransform = Instantiate(knight, spawnPosition, spawnRotation) as Transform;
+				if (i >= initialHazardCount) {
+					creepObject = (GameObject)Instantiate(knight, spawnPosition, spawnRotation);
 				}
 				else {
-					creepTransform = Instantiate(peasant, spawnPosition, spawnRotation) as Transform;
+					creepObject = (GameObject)Instantiate(peasant, spawnPosition, spawnRotation);
+					Debug.Log(creepObject);
 				}
 
-				Creep creep = creepTransform.gameObject.GetComponent<Creep>();
+				Creep creep = creepObject.GetComponent<Creep>();
 				creep.setPath(waypoints);
 
 				yield return new WaitForSeconds(spawnWait);
