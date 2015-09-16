@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Tower : MonoBehaviour {
+public abstract class Tower : MonoBehaviour {
     protected float damage;
     protected float fireRate;
     protected float atkCooldown = 0;
@@ -23,13 +23,31 @@ public class Tower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        cleanupTargetList(); //checks current target for being alive, updates target otherwise
 
-	void OnTriggerEnter2D(Collider2D other) {
+        this.atkCooldown = this.atkCooldown + Time.deltaTime;
+        if (this.atkCooldown >= this.fireRate)
+        {
+            if (this.targetList.Count > 0)
+            {
+                curTarget = this.targetList[0];
+                this.fireAway(curTarget);
+            }
+
+        }
+    }
+
+    protected abstract void fireAway(Creep curTarget);
+
+    protected abstract bool validTarget(Creep curTarget);
+
+    void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Creep") {
 			Creep creep = other.gameObject.GetComponent<Creep>();
-			this.targetList.Add(creep);
+            if (validTarget(creep))
+            {
+                this.targetList.Add(creep);
+            }
 		}
 	}
 
@@ -42,6 +60,15 @@ public class Tower : MonoBehaviour {
 			}
 		}
 	}
+
+    private void cleanupTargetList()
+    {
+        if (targetList.Count > 0 && targetList[0].getHealth() <= 0)
+        {
+            targetList.RemoveAt(0);
+            cleanupTargetList();
+        }
+    }
 
     public float getDamage()
     {

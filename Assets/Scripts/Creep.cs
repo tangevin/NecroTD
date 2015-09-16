@@ -11,16 +11,46 @@ public class Creep : MonoBehaviour {
     protected float DoT = 0;
     protected List<GameObject> path;
     protected int curDestination = 0;
+    protected Vector3 target; //for movement
 
 	// Use this for initialization
 	void Start () {
 		}
 	
 	// Update is called once per frame
-	void Update () {
-		}
+	public void Update () {
+        if (this.health <= 0)
+        {
+            creepDeath();
+        }
 
-	public float getHealth() {
+        if (Vector3.Distance(this.transform.position, target) < 0.01)
+        {
+            this.curDestination++;
+            if (this.curDestination >= this.path.Count)
+            {
+                Destroy(this.gameObject);
+                return;   //Eventually this will be victory condition
+            }
+            this.target = this.setDestination();
+        }
+
+        float step = this.speed * Time.deltaTime;
+        this.transform.position = Vector3.MoveTowards(this.transform.position, this.target, step);
+
+    }
+
+    public void creepDeath()
+    {
+        Destroy(this.gameObject);
+    }
+
+    public Vector3 setDestination()
+    {
+        return this.path[this.curDestination].transform.position;
+    }
+
+    public float getHealth() {
 		return this.health;
 	}
 

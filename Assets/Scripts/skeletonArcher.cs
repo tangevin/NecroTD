@@ -19,7 +19,19 @@ public class skeletonArcher : Tower {
 	}
 	
     // Update is called once per frame
-    void Update () {
-	
-	}
+   
+
+    protected override void fireAway(Creep curTarget)
+    {
+        float health = curTarget.getHealth();
+        health = health - this.damage;
+        curTarget.setHealth(health);
+    }
+
+    protected override bool validTarget(Creep curTarget)
+    {
+        bool fly = this.flying || !curTarget.getFlying(); //true unless enemy is flying and tower is not
+        bool mag = this.magic && curTarget.getMagicImmune(); //true if enemy is immune and tower is magic
+        return fly && !mag;
+    }
 }
