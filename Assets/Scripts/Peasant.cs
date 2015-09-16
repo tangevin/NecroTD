@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Peasant : Creep {
 	private float initialHealth = 20;
-	private float initialSpeed = 2;
-    private Vector3 target;
+	private float initialSpeed = 1.0f;
+    private Vector3 target;  //for movement
 
     // Use this for initialization
     void Start () {
@@ -17,11 +17,11 @@ public class Peasant : Creep {
 	// Update is called once per frame
 	void Update () {
 
-        if (Vector3.Distance(this.transform.position, target) < 0.1){
+        if (Vector3.Distance(this.transform.position, target) < 0.01){
             this.curDestination++;
             if (this.curDestination >= this.path.Count)
             {
-                Destroy(this);
+                Destroy(this.gameObject);
                 return;   //Eventually this will be victory condition
             }
             this.target = this.setDestination();

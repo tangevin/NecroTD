@@ -5,17 +5,16 @@ public class skeletonArcher : Tower {
     private float initalDamage = 4;
     private float initialFireRate = 2.0f;
     private float initialRange = 120;
-    private bool flying = true;
     private float initialDoT = 2;
 
     // Use this for initialization
     void Start()
     {
-        this.setDamage(initalDamage);
-        this.setFireRate(initialFireRate);
-        this.setRange(initialRange);
-        this.setFlying(flying);
-        this.setDoT(initialDoT);
+        this.damage = initalDamage;
+        this.fireRate = initialFireRate;
+        this.range = initialRange;
+        this.DoT = initialDoT;
+        this.flying = true;
     }
     
     // Update is called once per frame

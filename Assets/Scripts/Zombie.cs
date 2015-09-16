@@ -8,9 +8,9 @@ public class Zombie : Tower {
 
 	// Use this for initialization
 	void Start () {
-        this.setDamage(initalDamage);
-        this.setFireRate(initialFireRate);
-        this.setRange(initialRange);	
+        this.damage = initalDamage;
+        this.fireRate = initialFireRate;
+        this.range = initialRange;	
 	}
 	
 	// Update is called once per frame

@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Tower : MonoBehaviour {
-    private float damage;
-    private float fireRate;
-    private float atkCooldown = 0;
-    private float range;
-    private bool flying = false;
-    private bool armorPen = false;
-    private bool magic = false;
-    private float DoT = 0;
-    private float slow = 1.0f;
-    private bool splash = false;
-    private Creep target;
+    protected float damage;
+    protected float fireRate;
+    protected float atkCooldown = 0;
+    protected float range;
+    protected bool flying = false;
+    protected bool armorPen = false;
+    protected bool magic = false;
+    protected float DoT = 0;
+    protected float slow = 1.0f;
+    protected bool splash = false;
+    protected Creep curTarget;
+    protected List<Creep> targetList;
+
 
 	// Use this for initialization
 	void Start () {
@@ -124,14 +126,24 @@ public class Tower : MonoBehaviour {
         this.splash = splash;
     }
 
-    public Creep getTarget()
+    public Creep getCurTarget()
     {
-        return this.target;
+        return this.curTarget;
     }
 
-    public void setTarget(Creep target)
+    public void setCurTarget(Creep curTarget)
     {
-        this.target = target;
+        this.curTarget = curTarget;
+    }
+
+    public List<Creep> getTargetList()
+    {
+        return this.targetList;
+    }
+
+    public void setTargetList(List<Creep> targetList)
+    {
+        this.targetList = targetList;
     }
 
 }
