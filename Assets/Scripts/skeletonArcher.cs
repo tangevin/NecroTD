@@ -14,9 +14,10 @@ public class skeletonArcher : Tower {
         this.fireRate = initialFireRate;
         this.range = initialRange;
         this.DoT = initialDoT;
-        this.flying = true;
-    }
-    
+		this.flying = true;
+		this.gameObject.GetComponent<CircleCollider2D>().radius = initialRange;
+	}
+	
     // Update is called once per frame
     void Update () {
 	

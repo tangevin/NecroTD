@@ -14,8 +14,9 @@ public class undeadMage : Tower {
         this.fireRate = initialFireRate;
         this.range = initialRange;
         this.armorPen = true;
-        this.slow = initialSlow;
-    }
+		this.slow = initialSlow;
+		this.gameObject.GetComponent<CircleCollider2D>().radius = initialRange;
+	}
 	
 	// Update is called once per frame
 	void Update () {

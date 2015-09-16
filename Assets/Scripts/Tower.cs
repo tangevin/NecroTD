@@ -13,17 +13,34 @@ public class Tower : MonoBehaviour {
     protected float slow = 1.0f;
     protected bool splash = false;
     protected Creep curTarget;
-    protected List<Creep> targetList;
+	protected List<Creep> targetList = new List<Creep>();
 
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.tag == "Creep") {
+			Creep creep = other.gameObject.GetComponent<Creep>();
+			this.targetList.Add(creep);
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D other) {
+		if (other.tag == "Creep") {
+			Creep creep = other.gameObject.GetComponent<Creep>();
+
+			if (targetList.Contains(creep)) {
+				this.targetList.Remove(creep);
+			}
+		}
 	}
 
     public float getDamage()
